@@ -1,0 +1,23 @@
+alias: GeyserControl
+description: Turns off geyser if its tirned on for long
+trigger:
+  - device_id: ""
+    domain: ""
+    entity_id: ""
+    platform: device
+action:
+  - repeat:
+      while:
+        - device_id: ""
+          domain: ""
+          entity_id: ""
+          condition: device
+      sequence:
+        - delay: "00:05:00"
+        - condition: numeric_state
+          entity_id: sensor.solimo_smart_plug_16a_power
+          below: 20
+        - device_id: ""
+          domain: ""
+          entity_id: ""
+mode: single
